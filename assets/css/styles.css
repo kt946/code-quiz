@@ -24,7 +24,7 @@ header {
     text-align: center;
 }
 
-.button {
+button {
     font-size: 25px;
     color: white;
     background-color: indigo;
@@ -32,6 +32,10 @@ header {
     border-radius: 8px;
 }
 
-.button:hover {
+button:hover {
     background-color: blueviolet;
+}
+
+.hide {
+    display: none;
 }
