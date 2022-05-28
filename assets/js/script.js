@@ -36,6 +36,8 @@ var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#time");
 var time = 75;
 var timeInterval;
+var userInitials = document.getElementById("save-initials")
+var scoreValue = document.getElementById("score");
 
 // timer countdown function
 var updateTime = function() {
@@ -93,8 +95,9 @@ var nextQuestion = function() {
     if (questionIndex === questions.length) {
         endQuiz();
     }
-
-    presentQuestion();
+    else {
+        presentQuestion();
+    }
 };
 
 // function for starting the quiz
@@ -124,13 +127,22 @@ var endQuiz = function() {
 
     // reveal final score page
     var endPage = document.getElementById("end-page");
-    var scoreValue = document.getElementById("score");
     scoreValue.textContent = time;
     endPage.setAttribute("class", "");
 };
 
+var saveScore = function () {
+    var userObj = {
+        initials: userInitials.value,
+        score: scoreValue.textContent
+    }
+    localStorage.setItem("user", JSON.stringify(userObj));
+}
+
 document.getElementById("start-btn").addEventListener("click", startQuiz);
 
 choicesListEl.addEventListener("click", checkAnswer);
+
+document.getElementById("submit-btn").addEventListener("click", saveScore);
 
 
