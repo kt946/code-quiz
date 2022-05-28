@@ -30,7 +30,6 @@ var questions = [
 // variables for document
 var questionEl = document.querySelector("#question");
 var questionIndex = 0;
-var choicesListEl = document.querySelector("#choices-container");
 var choicesEl = document.querySelector("#choices-list");
 var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#time");
@@ -154,7 +153,7 @@ var saveScore = function () {
 
 document.getElementById("start-btn").addEventListener("click", startQuiz);
 
-choicesListEl.addEventListener("click", checkAnswer);
+choicesEl.addEventListener("click", checkAnswer);
 
 document.getElementById("submit-btn").addEventListener("click", saveScore);
 

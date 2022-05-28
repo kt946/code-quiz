@@ -72,6 +72,10 @@ input {
     font-size: larger;
 }
 
+.score-page {
+    margin-top: 120px;
+}
+
 #score-list {
     padding: 0px;
 }
