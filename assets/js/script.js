@@ -133,13 +133,16 @@ var endQuiz = function() {
 // function to save initials and score to local storage
 var saveScore = function () {
     var userInput = document.getElementById("save-initials");
+
     // if list exists, get list; otherwise set list empty
     var userList = JSON.parse(localStorage.getItem("user")) || [];
+
     // object to hold initials and score
     var userObj = {
         initials: userInput.value.trim(),
         score: scoreValue.textContent
     };
+    
     // add to list and save to local storage
     userList.push(userObj);
     localStorage.setItem("user", JSON.stringify(userList));
