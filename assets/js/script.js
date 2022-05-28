@@ -49,22 +49,25 @@ var updateTime = function() {
 
 // function for displaying question title and choices
 var presentQuestion = function() {
+    // clear previous questions and choices
+    questionEl.innerHTML = "";
+    choicesEl.innerHTML = "";
     // present question title
     var questionTitle = document.createElement("h2")
     questionTitle.textContent = questions[questionIndex].title;
-
     questionEl.append(questionTitle);
 
+    // list choices
     var choices = questions[questionIndex].choices;
     var choicesLength = choices.length;
-
-    // list choices
     for (var i = 0; i < choices.length; i++) {
         var listEl = document.createElement("li");
         listEl.textContent = choices[i]
         choicesEl.append(listEl);
     }
-}
+};
+
+// function for checking answer
 
 var checkAnswer = function(event) {
     if (event.target.matches("li")) {
@@ -74,9 +77,24 @@ var checkAnswer = function(event) {
         }
         else {
             resultEl.textContent = "Wrong!";
+            time -= 10;
+            if (time < 0) {
+                time = 0;
+            }
+            timerEl.textContent = time;
         }
     }
-}
+    nextQuestion();
+};
+
+// function for getting next question
+var nextQuestion = function() {
+    questionIndex++;
+    setTimeout(function() {
+        resultEl.textContent = "";
+    }, 2000);
+    presentQuestion();
+};
 
 // function for starting the quiz
 var startQuiz = function() {
