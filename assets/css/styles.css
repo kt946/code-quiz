@@ -28,15 +28,17 @@ a {
     text-align: center;
 }
 
-button {
+.button {
     font-size: 25px;
     color: white;
     background-color: indigo;
     padding: 10px 20px;
     border-radius: 8px;
+    width: fit-content;
+    margin: 10px 0;
 }
 
-button:hover {
+.button:hover {
     background-color: blueviolet;
 }
 

@@ -53,7 +53,7 @@ var presentQuestion = function() {
     questionEl.innerHTML = "";
     choicesEl.innerHTML = "";
     // present question title
-    var questionTitle = document.createElement("h2")
+    var questionTitle = document.createElement("h2");
     questionTitle.textContent = questions[questionIndex].title;
     questionEl.append(questionTitle);
 
@@ -62,7 +62,8 @@ var presentQuestion = function() {
     var choicesLength = choices.length;
     for (var i = 0; i < choices.length; i++) {
         var listEl = document.createElement("li");
-        listEl.textContent = choices[i]
+        listEl.setAttribute("class", "button");
+        listEl.textContent = choices[i];
         choicesEl.append(listEl);
     }
 };
@@ -132,21 +133,22 @@ var endQuiz = function() {
 
 // function to save initials and score to local storage
 var saveScore = function () {
-    var userInput = document.getElementById("save-initials");
+    var userInput = document.getElementById("save-initials").value.trim();
 
-    // if list exists, get list; otherwise set list empty
-    var userList = JSON.parse(localStorage.getItem("user")) || [];
-
-    // object to hold initials and score
-    var userObj = {
-        initials: userInput.value.trim(),
-        score: scoreValue.textContent
-    };
-    
-    // add to list and save to local storage
-    userList.push(userObj);
-    localStorage.setItem("user", JSON.stringify(userList));
-    window.location = "score.html";
+    // validate user input
+    if (userInput !== "") {
+        // if list exists, get list; otherwise set list empty
+        var userList = JSON.parse(localStorage.getItem("user")) || [];
+        // object to hold initials and score
+        var userObj = {
+            initials: userInput,
+            score: scoreValue.textContent
+        };
+        // add to list and save to local storage
+        userList.push(userObj);
+        localStorage.setItem("user", JSON.stringify(userList));
+        window.location = "score.html";
+    }
 };
 
 document.getElementById("start-btn").addEventListener("click", startQuiz);
