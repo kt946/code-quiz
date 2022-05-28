@@ -42,8 +42,7 @@ var updateTime = function() {
     time--;
     timerEl.textContent = time;
     if (time <= 0) {
-        time = 0;
-        clearInterval(timeInterval);
+        endQuiz();
     }
 };
 
@@ -68,7 +67,6 @@ var presentQuestion = function() {
 };
 
 // function for checking answer
-
 var checkAnswer = function(event) {
     if (event.target.matches("li")) {
         var userAnswer = event.target.textContent;
@@ -78,9 +76,6 @@ var checkAnswer = function(event) {
         else {
             resultEl.textContent = "Wrong!";
             time -= 10;
-            if (time < 0) {
-                time = 0;
-            }
             timerEl.textContent = time;
         }
     }
@@ -93,18 +88,49 @@ var nextQuestion = function() {
     setTimeout(function() {
         resultEl.textContent = "";
     }, 2000);
+
+    // if all questions are answered
+    if (questionIndex === questions.length) {
+        endQuiz();
+    }
+
     presentQuestion();
 };
 
 // function for starting the quiz
 var startQuiz = function() {
+    // hide start page
     var startPageEl = document.getElementById("start-page");
-    startPageEl.setAttribute("class", "hide");
+    startPageEl.setAttribute("class", "hidden");
+
+    // start timer
     timerEl.textContent = time;
     timeInterval = setInterval(updateTime, 1000);
     presentQuestion();
 };
 
+// function for ending quiz and displaying score
+var endQuiz = function() {
+    // stop timer
+    clearInterval(timeInterval);
+    if (time <= 0) {
+        time = 0;
+        timerEl.textContent = time;
+    }
+
+    // clear page if timer runs out
+    questionEl.innerHTML = "";
+    choicesEl.innerHTML = "";
+
+    // reveal final score page
+    var endPage = document.getElementById("end-page");
+    var scoreValue = document.getElementById("score");
+    scoreValue.textContent = time;
+    endPage.setAttribute("class", "");
+};
+
 document.getElementById("start-btn").addEventListener("click", startQuiz);
 
 choicesListEl.addEventListener("click", checkAnswer);
+
+
