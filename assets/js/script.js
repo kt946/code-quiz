@@ -1,3 +1,4 @@
+// question object containing array of title, choices, and answers
 var questions = [
     {
         title: "Commonly used data types DO Not include:",
@@ -26,9 +27,17 @@ var questions = [
     }
 ];
 
+// variables for document
+var questionEl = document.querySelector("#question");
+var questionIndex = 0;
+var choicesListEl = document.querySelector("#choices-container");
+var choicesEl = document.querySelector("#choices-list");
+var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#time");
-var time = 10;
+var time = 75;
 var timeInterval;
+
+// timer countdown function
 var updateTime = function() {
     time--;
     timerEl.textContent = time;
@@ -38,11 +47,46 @@ var updateTime = function() {
     }
 };
 
+// function for displaying question title and choices
+var presentQuestion = function() {
+    // present question title
+    var questionTitle = document.createElement("h2")
+    questionTitle.textContent = questions[questionIndex].title;
+
+    questionEl.append(questionTitle);
+
+    var choices = questions[questionIndex].choices;
+    var choicesLength = choices.length;
+
+    // list choices
+    for (var i = 0; i < choices.length; i++) {
+        var listEl = document.createElement("li");
+        listEl.textContent = choices[i]
+        choicesEl.append(listEl);
+    }
+}
+
+var checkAnswer = function(event) {
+    if (event.target.matches("li")) {
+        var userAnswer = event.target.textContent;
+        if (userAnswer === questions[questionIndex].answer) {
+            resultEl.textContent = "Correct!";
+        }
+        else {
+            resultEl.textContent = "Wrong!";
+        }
+    }
+}
+
+// function for starting the quiz
 var startQuiz = function() {
-    var startPage = document.getElementById("start-page");
-    startPage.setAttribute("class", "hide");
+    var startPageEl = document.getElementById("start-page");
+    startPageEl.setAttribute("class", "hide");
     timerEl.textContent = time;
     timeInterval = setInterval(updateTime, 1000);
+    presentQuestion();
 };
 
 document.getElementById("start-btn").addEventListener("click", startQuiz);
+
+choicesListEl.addEventListener("click", checkAnswer);
