@@ -36,7 +36,6 @@ var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#time");
 var time = 75;
 var timeInterval;
-var userInitials = document.getElementById("save-initials")
 var scoreValue = document.getElementById("score");
 
 // timer countdown function
@@ -131,13 +130,20 @@ var endQuiz = function() {
     endPage.setAttribute("class", "");
 };
 
+// function to save initials and score to local storage
 var saveScore = function () {
+    var userInput = document.getElementById("save-initials");
+    // if list exists, get list; otherwise set list empty
+    var userList = JSON.parse(localStorage.getItem("user")) || [];
+    // object to hold initials and score
     var userObj = {
-        initials: userInitials.value,
+        initials: userInput.value.trim(),
         score: scoreValue.textContent
-    }
-    localStorage.setItem("user", JSON.stringify(userObj));
-}
+    };
+    // add to list and save to local storage
+    userList.push(userObj);
+    localStorage.setItem("user", JSON.stringify(userList));
+};
 
 document.getElementById("start-btn").addEventListener("click", startQuiz);
 
