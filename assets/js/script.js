@@ -80,6 +80,7 @@ var checkAnswer = function(event) {
             time -= 10;
             timerEl.textContent = time;
         }
+        resultEl.removeAttribute("class", "hidden");
     }
     nextQuestion();
 };
@@ -88,7 +89,7 @@ var checkAnswer = function(event) {
 var nextQuestion = function() {
     questionIndex++;
     setTimeout(function() {
-        resultEl.textContent = "";
+        resultEl.setAttribute("class", "hidden")
     }, 2000);
 
     // if all questions are answered
