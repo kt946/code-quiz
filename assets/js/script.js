@@ -146,6 +146,7 @@ var saveScore = function () {
     // add to list and save to local storage
     userList.push(userObj);
     localStorage.setItem("user", JSON.stringify(userList));
+    window.location = "score.html";
 };
 
 document.getElementById("start-btn").addEventListener("click", startQuiz);
