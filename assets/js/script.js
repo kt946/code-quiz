@@ -8,7 +8,7 @@ var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#time");
 var time = 75;
 var timeInterval;
-var scoreValue = document.getElementById("score");
+var scoreValue = document.querySelector("#score");
 
 // timer countdown function
 var updateTime = function() {
@@ -24,6 +24,7 @@ var presentQuestion = function() {
     // clear previous questions and choices
     questionEl.innerHTML = "";
     choicesEl.innerHTML = "";
+    
     // present question title
     var questionTitle = document.createElement("h2");
     questionTitle.textContent = questions[questionIndex].question;
