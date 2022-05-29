@@ -38,6 +38,7 @@ a {
     border-radius: 8px;
     width: fit-content;
     margin: 10px 0;
+    border: 2px solid black;
 }
 
 .button:hover {

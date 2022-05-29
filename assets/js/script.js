@@ -26,8 +26,8 @@ var presentQuestion = function() {
     choicesEl.innerHTML = "";
     // present question title
     var questionTitle = document.createElement("h2");
-    questionTitle.textContent = questions[questionIndex].title;
-    questionEl.append(questionTitle);
+    questionTitle.textContent = questions[questionIndex].question;
+    questionEl.appendChild(questionTitle);
 
     // list choices
     var choices = questions[questionIndex].choices;
@@ -36,7 +36,7 @@ var presentQuestion = function() {
         var listEl = document.createElement("li");
         listEl.setAttribute("class", "button");
         listEl.textContent = choices[i];
-        choicesEl.append(listEl);
+        choicesEl.appendChild(listEl);
     }
 };
 
@@ -52,7 +52,12 @@ var checkAnswer = function(event) {
             time -= 10;
             timerEl.textContent = time;
         }
+        // show result for question
         resultEl.removeAttribute("class", "hidden");
+         // remove result for previous question
+        setTimeout(function() {
+            resultEl.setAttribute("class", "hidden")
+        }, 1000);
     }
     nextQuestion();
 };
@@ -60,10 +65,6 @@ var checkAnswer = function(event) {
 // function for getting next question
 var nextQuestion = function() {
     questionIndex++;
-    setTimeout(function() {
-        resultEl.setAttribute("class", "hidden")
-    }, 2000);
-
     // if all questions are answered
     if (questionIndex === questions.length) {
         endQuiz();
@@ -101,7 +102,7 @@ var endQuiz = function() {
     // reveal final score page
     var endPage = document.getElementById("end-page");
     scoreValue.textContent = time;
-    endPage.setAttribute("class", "");
+    endPage.removeAttribute("class", "hidden");
 };
 
 // function to save initials and score to local storage
