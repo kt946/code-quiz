@@ -32,7 +32,6 @@ var presentQuestion = function() {
 
     // list choices
     var choices = questions[questionIndex].choices;
-    var choicesLength = choices.length;
     for (var i = 0; i < choices.length; i++) {
         var listEl = document.createElement("li");
         listEl.setAttribute("class", "button");
