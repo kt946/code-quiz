@@ -6,7 +6,7 @@ For this week's challenge, I built a code quiz using HTML, CSS, JavaScript, and 
 
 ![Screenshot of codeing quiz](./assets/images/Screenshot%202022-05-28%20at%2020-29-18%20Code%20Quiz.png)
 
-## The following links are for the git repository hosting the code and the password generator:
+## The following links are for the git repository hosting the code and the code quiz:
 
 * [Link to GitHub repository](https://github.com/kt946/code-quiz)
 
