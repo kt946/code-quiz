@@ -4,7 +4,7 @@ For this week's challenge, I built a code quiz using HTML, CSS, JavaScript, and 
 
 ## The following image depicts a screenshot of the completed coding quiz
 
-![Screenshot of codeing quiz](./assets/images/Screenshot%202022-05-28%20at%2020-29-18%20Code%20Quiz.png)
+![Screenshot of coding quiz](./assets/images/Screenshot%202022-05-28%20at%2020-29-18%20Code%20Quiz.png)
 
 ## The following links are for the git repository hosting the code and the code quiz:
 
