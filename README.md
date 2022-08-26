@@ -10,7 +10,7 @@ To use this application, clone the repository into a directory on your local mac
 
 ## Screenshot
 
-![Screenshot of codeing quiz](./assets/images/Screenshot%202022-05-28%20at%2020-29-18%20Code%20Quiz.png)
+![Screenshot of coding quiz](./assets/images/Screenshot%202022-05-28%20at%2020-29-18%20Code%20Quiz.png)
 
 ## Links
 
